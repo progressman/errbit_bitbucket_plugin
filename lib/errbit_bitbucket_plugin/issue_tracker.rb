@@ -97,5 +97,9 @@ module ErrbitBitbucketPlugin
         raise ErrbitBitbucketPlugin::AuthenticationError, "Could not authenticate with Bitbucket.  Please check your username and password."
       end
     end
+
+    def url
+      "https://www.atlassian.com/software"
+    end
   end
 end
