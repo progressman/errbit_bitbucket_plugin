@@ -39,6 +39,10 @@ module ErrbitBitbucketPlugin
       ))
     end
 
+    def configured?
+      project_id
+    end
+
     def project_id
       app.bitbucket_repo
     end
@@ -53,6 +57,18 @@ module ErrbitBitbucketPlugin
         errors << [:base, 'You must specify your Bitbucket username and password.']
       end
       errors
+    end
+
+    def check_params
+      if @params['username']
+        {}
+      else
+        { :username, 'Username must be present' }
+      end
+    end
+
+    def comments_allowed?
+      false
     end
 
     def bitbucket_client
@@ -74,7 +90,7 @@ module ErrbitBitbucketPlugin
         @url = "https://bitbucket.com/#{issue.body.resource_uri}"
         problem.update_attributes(
           :issue_link => @url,
-          :issue_type => self.class.label
+          :issue_type => 'bug'
         )
 
       rescue BitBucket::Error::Unauthorized
