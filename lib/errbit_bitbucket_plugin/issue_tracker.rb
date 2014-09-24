@@ -63,7 +63,7 @@ module ErrbitBitbucketPlugin
       if @params['username']
         {}
       else
-        { :username, 'Username must be present' }
+        { :username => 'Username must be present' }
       end
     end
 
