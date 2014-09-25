@@ -3,7 +3,7 @@ require 'bitbucket_rest_api'
 module ErrbitBitbucketPlugin
   class IssueTracker < ErrbitPlugin::IssueTracker
 
-    LABEL = 'Bitbucket'
+    LABEL = 'bitbucket'
 
     NOTE = 'Please configure your butbucket account.'
 
