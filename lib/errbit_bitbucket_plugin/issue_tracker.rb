@@ -69,6 +69,7 @@ module ErrbitBitbucketPlugin
     end
 
     def create_issue(problem, reported_by = nil)
+      raise ErrbitBitbucketPlugin::AuthenticationError, "Could not authenticate with Bitbucket.  Please check your username and password."
       begin
         issue_params = {
           :title => "[#{ problem.environment }][#{ problem.where }] #{problem.message.to_s.truncate(100)}",
