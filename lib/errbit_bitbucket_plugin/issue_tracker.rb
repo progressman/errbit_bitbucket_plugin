@@ -47,10 +47,6 @@ module ErrbitBitbucketPlugin
       app.bitbucket_repo
     end
 
-    def username
-      app.username
-    end
-
     def errors
       errors = []
       if self.class.fields.detect {|f| params[f[0]].blank?}
@@ -83,7 +79,7 @@ module ErrbitBitbucketPlugin
           :kind => 'bug'
         }
         issue = bitbucket_client.issues.create(
-          username,
+          params['username'],
           project_id,
           issue_params
         )
