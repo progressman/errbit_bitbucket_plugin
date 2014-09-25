@@ -72,6 +72,7 @@ module ErrbitBitbucketPlugin
     end
 
     def bitbucket_client
+      puts "------ params #{params.inspect}"
       BitBucket.new :login => params['username'], :password => params['password']
     end
 
