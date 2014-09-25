@@ -73,22 +73,27 @@ module ErrbitBitbucketPlugin
         issue_params = {
           :title => "[#{ problem.environment }][#{ problem.where }] #{problem.message.to_s.truncate(100)}",
           :content => self.class.body_template.result(binding).unpack('C*').pack('U*'),
-          :kind => 'bug'
+          :kind => 'bug',
+          :priority => 'major'
         }
         issue = bitbucket_client.issues.create(
           params['username'],
           project_id,
           issue_params
         )
-        @url = "https://bitbucket.com/#{issue.body.resource_uri}"
+        
         problem.update_attributes(
-          :issue_link => @url,
+          :issue_link => bitbucket_url(issue.body.resource_uri),
           :issue_type => 'bug'
         )
 
       rescue BitBucket::Error::Unauthorized
         raise ErrbitBitbucketPlugin::AuthenticationError, "Could not authenticate with Bitbucket.  Please check your username and password."
       end
+    end
+
+    def bitbucket_url(resource_uri)
+      "https://bitbucket.org/" + resource_uri.split('/')[3,5].join('/').gsub(/issues/,'issue')
     end
 
     def url
