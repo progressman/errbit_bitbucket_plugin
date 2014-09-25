@@ -48,7 +48,7 @@ module ErrbitBitbucketPlugin
     end
 
     def username
-      app.bitbucket_username
+      app.username
     end
 
     def errors
@@ -72,7 +72,6 @@ module ErrbitBitbucketPlugin
     end
 
     def bitbucket_client
-      puts "------ params #{params.inspect}"
       BitBucket.new :login => params['username'], :password => params['password']
     end
 
