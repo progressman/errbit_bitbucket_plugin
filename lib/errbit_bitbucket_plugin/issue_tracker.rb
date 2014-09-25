@@ -13,9 +13,6 @@ module ErrbitBitbucketPlugin
       },
       :password => {
         :placeholder => "Your password on bitbucket"
-      },
-      :bitbucket_repo => {
-        :placeholder => "Your bitbucket repo"
       }
     }
 
