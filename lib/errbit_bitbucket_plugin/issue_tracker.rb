@@ -37,9 +37,9 @@ module ErrbitBitbucketPlugin
     
     def self.icons
       @icons ||= {
-        create: [ 'image/png', File.read('./vendor/assets/images/bitbucket_create.png') ],
-        goto: [ 'image/png', File.read('./vendor/assets/images/bitbucket_create.png') ],
-        inactive: [ 'image/png', File.read('./vendor/assets/images/bitbucket_inactive.png') ],
+        create: [ 'image/png', ErrbitBitbucketPlugin.read_static_file('bitbucket_create.png') ],
+        goto: [ 'image/png', ErrbitBitbucketPlugin.read_static_file('bitbucket_create.png') ],
+        inactive: [ 'image/png', ErrbitBitbucketPlugin.read_static_file('bitbucket_inactive.png') ],
       }
     end
 
