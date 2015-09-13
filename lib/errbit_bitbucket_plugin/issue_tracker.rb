@@ -59,9 +59,9 @@ module ErrbitBitbucketPlugin
       errors
     end
 
-    def check_params
-      @params['username'] ? {} : { username: 'Username must be present' }
-    end
+    # def check_params
+    #   @params['username'] ? {} : { username: 'Username must be present' }
+    # end
 
     def comments_allowed?
       false
