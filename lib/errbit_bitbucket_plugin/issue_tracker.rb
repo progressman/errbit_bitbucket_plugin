@@ -53,8 +53,11 @@ module ErrbitBitbucketPlugin
 
     def errors
       errors = []
-      if self.class.fields.detect { |f| params[f[0]].blank? }
-        errors << [:base, 'You must specify your Bitbucket username and password.']
+      if self.class.fields.detect {|f| options[f[0]].blank? }
+        errors << [:base, 'You must specify your BitBucket username and password']
+      end
+      if repo.blank?
+        errors << [:base, 'You must specify your BitBucket repository url.']
       end
       errors
     end
