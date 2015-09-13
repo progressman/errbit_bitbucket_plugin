@@ -34,6 +34,14 @@ module ErrbitBitbucketPlugin
         )
       ))
     end
+    
+    def self.icons
+      @icons ||= {
+        create: [ 'image/png', File.read('./vendor/assets/images/bitbucket_create.png') ],
+        goto: [ 'image/png', File.read('./vendor/assets/images/bitbucket_create.png') ],
+        inactive: [ 'image/png', File.read('./vendor/assets/images/bitbucket_inactive.png') ],
+      }
+    end
 
     def configured?
       project_id
